@@ -31,23 +31,26 @@
                                 <li><a class="dropdown-item" href="NuevasLlegadas.html">Nuevas Llegadas</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="iniciarsesion.html">Iniciar Sesión</a></li>
-
+                        <li><a class="dropdown-item" href="iniciarsesion.html">Iniciar Sesión</a></li>
+                        <li><a class="dropdown-item" href="#" id="cerrarSesionBtn">Cerrar Sesión</a></li>
                     </ul>
-                    <form class="d-flex">
-                        <button id="cartBtn" class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Carrito
-                            <span id="cartCount" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                        <button id="clearCartBtn" class="btn btn-outline-danger ms-2" type="button">
-                            <i class="bi-trash-fill me-1"></i>
-                            Vaciar Carrito
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <button id="cartBtn" class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Carrito
+                    <span id="cartCount" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+                <button id="clearCartBtn" class="btn btn-outline-danger ms-2" type="button">
+                    <i class="bi-trash-fill me-1"></i>
+                    Vaciar Carrito
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -405,5 +408,18 @@
             });
         });
     </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+          // Función para cerrar sesión (borrar cuentas)
+          function cerrarSesion() {
+              localStorage.removeItem('userAccounts');
+              alert('Sesión cerrada correctamente.');
+              window.location.href = 'index.html'; // Redirigir a la página principal
+          }
+  
+          // Agregar evento al botón de cerrar sesión
+          document.getElementById('cerrarSesionBtn').addEventListener('click', cerrarSesion);
+      </script>
+  </body>
 </body>
 </html>

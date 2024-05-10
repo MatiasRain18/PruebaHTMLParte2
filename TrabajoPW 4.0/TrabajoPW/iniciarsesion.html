@@ -37,7 +37,7 @@
                 <div class="col-md-6">
                     <!-- Aquí iría el contenido de tu formulario de inicio de sesión -->
                     <h1 class="display-5 fw-bolder">Iniciar Sesión</h1>
-                    <form action="validar_login.php" method="POST">
+                    <form id="loginForm" action="#" method="POST">
                         <label for="email" class="form-label">Correo Electrónico:</label>
                         <input type="email" id="email" name="email" class="form-control mb-3" required>
                         
@@ -56,5 +56,31 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function iniciarSesion(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+            
+            // Obtener los valores del formulario
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            // Obtener las cuentas registradas del Local Storage
+            const existingAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            
+            // Buscar la cuenta correspondiente
+            const loggedInAccount = existingAccounts.find(account => account.email === email && account.password === password);
+            if (loggedInAccount) {
+                alert('Inicio de sesión exitoso.');
+                setTimeout(function() {
+                    window.location.href = 'index.html'; // Redirigir después de 3 segundos
+                }, 3000);
+            } else {
+                alert('Correo electrónico o contraseña incorrectos.');
+            }
+        }
+        
+        // Agregar evento de envío al formulario de inicio de sesión
+        document.getElementById('loginForm').addEventListener('submit', iniciarSesion);
+    </script>
 </body>
 </html>
